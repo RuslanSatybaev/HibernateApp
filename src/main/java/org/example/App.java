@@ -14,8 +14,7 @@ public class App {
         try (SessionFactory sessionFactory = configuration.buildSessionFactory();
              Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
-            Person person = session.get(Person.class, 2);
-            session.delete(person);
+            session.createQuery("DELETE Person WHERE age < 30").executeUpdate();
 
             session.getTransaction().commit();
         }
