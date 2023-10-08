@@ -14,13 +14,8 @@ public class App {
         try (SessionFactory sessionFactory = configuration.buildSessionFactory();
              Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
-            Person person = new Person("Test1", 30);
-            Person person2 = new Person("Test2", 40);
-            Person person3 = new Person("Test3", 60);
-
-            session.save(person);
-            session.save(person2);
-            session.save(person3);
+            Person person = session.get(Person.class, 2);
+            session.delete(person);
 
             session.getTransaction().commit();
         }
