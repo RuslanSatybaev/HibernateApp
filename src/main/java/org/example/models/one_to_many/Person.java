@@ -1,9 +1,9 @@
-package org.example.models;
+package org.example.models.one_to_many;
 
+import org.example.models.Passport;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,13 +21,13 @@ public class Person {
     @Column(name = "age")
     private int age;
 
-    @OneToOne(mappedBy = "person")
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    private Passport passport;
-
-//    @OneToMany(mappedBy = "owner")
+//    @OneToOne(mappedBy = "person")
 //    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-//    private List<Item> items;
+//    private Passport passport;
+
+    @OneToMany(mappedBy = "owner")
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    private List<Item> items;
 
     public Person() {
     }
@@ -62,22 +62,22 @@ public class Person {
         this.age = age;
     }
 
-//    public List<Item> getItems() {
-//        return items;
-//    }
-//
-//    public void setItems(List<Item> items) {
-//        this.items = items;
-//    }
-
-    public Passport getPassport() {
-        return passport;
+    public List<Item> getItems() {
+        return items;
     }
 
-    public void setPassport(Passport passport) {
-        this.passport = passport;
-        passport.setPerson(this);
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
+
+//    public Passport getPassport() {
+//        return passport;
+//    }
+
+//    public void setPassport(Passport passport) {
+//        this.passport = passport;
+//        passport.setPerson(this);
+//    }
 
 //    public void addItem(Item item) {
 //        if (this.items == null) {

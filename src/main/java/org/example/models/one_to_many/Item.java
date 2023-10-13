@@ -1,4 +1,4 @@
-package org.example.models;
+package org.example.models.one_to_many;
 
 import javax.persistence.*;
 

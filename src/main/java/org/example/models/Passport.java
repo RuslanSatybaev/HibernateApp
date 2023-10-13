@@ -1,5 +1,7 @@
 package org.example.models;
 
+import org.example.models.one_to_many.Person;
+
 import javax.persistence.*;
 
 @Entity
@@ -33,13 +35,13 @@ public class Passport {
         this.id = id;
     }
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
+//    public Person getPerson() {
+//        return person;
+//    }
+//
+//    public void setPerson(Person person) {
+//        this.person = person;
+//    }
 
     public int getPassportNumber() {
         return passportNumber;
